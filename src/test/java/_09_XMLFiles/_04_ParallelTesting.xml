@@ -1,0 +1,16 @@
+<suite name="Suit 1"  parallel="tests" thread-count="2">
+  <test name="Test 1">
+    <parameter name="browser" value="firefox"></parameter>
+    <classes>
+        <class name="_07_Runners._04_TestRunnerParallel">
+            <methods><include name=".*SmokeTest.*"/></methods>
+            </class>
+    </classes>
+  </test>
+  <test name="Test 2">
+    <parameter name="browser" value="chrome"></parameter>
+    <classes>
+      <class name="_07_Runners._04_TestRunnerParallel"></class>
+    </classes>
+  </test>
+</suite>
