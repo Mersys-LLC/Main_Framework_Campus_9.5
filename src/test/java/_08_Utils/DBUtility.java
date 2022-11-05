@@ -13,42 +13,29 @@ public class DBUtility {
   private static Connection connection;
   protected static Statement statement;
 
-  protected static void  DBConnectionOpen(){ // we change this static coz we will call this method in static
+  protected static void DBConnectionOpen() { // we change this static coz we will call this method in static
     // this can be private or protected but protected when we need to use in other class
 
-    String url= "jdbc:mysql://db-technostudy.ckr1jisflxpv.us-east-1.rds.amazonaws.com:3306/yyoldas"; // hostname,port,db name
-    String username= "root";
-    String password= "'\"-LhCB'.%k[4S]z";
+    String url = "jdbc:mysql://db-technostudy.ckr1jisflxpv.us-east-1.rds.amazonaws.com:3306/yyoldas"; // hostname,port,db name
+    String username = "root";
+    String password = "'\"-LhCB'.%k[4S]z";
 
     try {
-      connection = DriverManager.getConnection(url,username,password);
-      statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY); //sql page open like mysql to write query
+      connection = DriverManager.getConnection(url, username, password);
+      statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+          ResultSet.CONCUR_READ_ONLY); //sql page open like mysql to write query
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
 
   }
 
-  private static void DBConnectionClose(){ // must be static and it's ok when its private coz its used only inside this class
+  private static void DBConnectionClose() { // must be static and it's ok when its private coz its used only inside this class
     try {
       connection.close();
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
-  }
-
-  public static void main(String[] args) { // this is for testing can we get the list or not
-
-    //List<List<String>> table=getListData("select * from nation");
-    List<List<String>> table2=addListData("select * from nation;\n"
-        + "insert into nation(name)\n"
-        + "value('Turkeyy')");
-
-//    for(List<String> row : table) // tes için kontrol , veriler geldi mi, liste atıldı mı
-//      System.out.println("row = " + row);
-    for(List<String> row : table2) // tes için kontrol , veriler geldi mi, liste atıldı mı
-      System.out.println("row = " + row);
-
   }
   public static List<List<String>> getListData(String sqlQuery) {
     List<List<String>> table = new ArrayList<>();
@@ -60,21 +47,17 @@ public class DBUtility {
       //1- sorguyu çalıştır
       ResultSet rs = statement.executeQuery(sqlQuery);
       //2- bütün satırları ve o satırlardaki sütunları oku Tabloya ekle
-      int columnCount =rs.getMetaData().getColumnCount();
+      int columnCount = rs.getMetaData().getColumnCount();
 
-      while (rs.next())
-      {
-        List<String> row=new ArrayList<>();
-        for(int i=1; i<= columnCount ;i++)
-        {
+      while (rs.next()) {
+        List<String> row = new ArrayList<>();
+        for (int i = 1; i <= columnCount; i++) {
           row.add(rs.getString(i));
         }
 
         table.add(row);
       }
-
-    }
-    catch (Exception ex){
+    } catch (Exception ex) {
       System.out.println("ex.getMessage() = " + ex.getMessage());
     }
 
@@ -82,37 +65,11 @@ public class DBUtility {
     //db bağlantısı kapat
     return table;
   }
+  public static void main(String[] args) { // this is for testing can we get the list or not
 
-  public static List<List<String>> addListData(String sqlQuery) {
-    List<List<String>> table = new ArrayList<>();
-    //db den bütün satırları ve sütunları okuyup bu liste atıcam
+    List<List<String>> table = getListData("select * from nation");
 
-    // db bağlantıyı aç
-    DBConnectionOpen();
-    try {
-      //1- sorguyu çalıştır
-      ResultSet rs = statement.executeQuery(sqlQuery);
-      //2- bütün satırları ve o satırlardaki sütunları oku Tabloya ekle
-      int columnCount =rs.getMetaData().getColumnCount();
-
-      while (rs.next())
-      {
-        List<String> row=new ArrayList<>();
-        for(int i=1; i<= columnCount ;i++)
-        {
-          row.add(rs.getString(i));
-        }
-
-        table.add(row);
-      }
-
-    }
-    catch (Exception ex){
-      System.out.println("ex.getMessage() = " + ex.getMessage());
-    }
-
-    DBConnectionClose();
-    //db bağlantısı kapat
-    return table;
+    for (List<String> row : table) // tes için kontrol , veriler geldi mi, liste atıldı mı
+      System.out.println("row = " + row);
   }
 }
