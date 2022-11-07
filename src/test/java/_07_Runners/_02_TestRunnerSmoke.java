@@ -7,22 +7,22 @@ import org.testng.annotations.AfterClass;
 
 
 @CucumberOptions(
-    tags = "@Dede",
-//  tags = "@Rerun",
+    tags = "@SmokeTest2",
+
     features = {"src/test/java/_01_FeatureFiles/"},
     glue = {"_06_StepDefinitions"},
     plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json", "html:target/site/cucumber-smoke-reports.html"}
-    //plugin= {"html:target/site/cucumber-smoke-reports.html"}
+//    plugin= {"html:target/site/cucumber-smoke-reports.html"}
 )
 
 public class _02_TestRunnerSmoke extends AbstractTestNGCucumberTests {
   @AfterClass
   public static void writeExtentReport() {
-    ExtentService.getInstance().setSystemInfo("User Name", "YYOLDAS");
+    ExtentService.getInstance().setSystemInfo("User Name", "Joseph");
     ExtentService.getInstance().setSystemInfo("Application Name", "Campus");
     ExtentService.getInstance().setSystemInfo("Operating System Info", System.getProperty("os.name").toString());
     ExtentService.getInstance().setSystemInfo("Department", "QA");
-    ExtentService.getInstance().setSystemInfo("Extra Info", "Info");
+    ExtentService.getInstance().setSystemInfo("Extra Info", "Fields Test Info");
   }
 
 
