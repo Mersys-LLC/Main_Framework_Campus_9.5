@@ -22,6 +22,9 @@ public class _02_Navigation_Bar_Elements extends _01_Base_POM {
   @FindBy(xpath = "//span[text()='Nationalities']")
   private WebElement nationalities;
 
+  @FindBy(xpath = "//span[text()='Fields']")
+  private WebElement fields;
+
   public WebElement getSetupOne() {    return setupOne;  }
 
   public WebElement getParameters() {
@@ -31,6 +34,7 @@ public class _02_Navigation_Bar_Elements extends _01_Base_POM {
   public WebElement getNationalities() {
     return nationalities;
   }
+  public WebElement getFields() { return fields; }
 
 
 

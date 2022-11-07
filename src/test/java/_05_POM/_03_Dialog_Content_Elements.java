@@ -14,8 +14,16 @@ public class _03_Dialog_Content_Elements extends _01_Base_POM {
 
   @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
   private WebElement addButton;
+
+  @FindBy(xpath = "//ms-add-button[contains(@tooltip,'GENERAL.BUTTON.ADD')]//button")
+  private WebElement addButton2;
   @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
   private WebElement nameInput;
+  @FindBy(xpath = "//ms-text-field[@formcontrolname='code']//input")
+  private WebElement codeInput;
+
+  @FindBy(xpath = "//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input")
+  private WebElement searchField;
   @FindBy(xpath = "//ms-save-button//button")
   private WebElement  saveButton;
   @FindBy(xpath = "//div[contains(text(),'successfully')]")
@@ -41,13 +49,13 @@ public class _03_Dialog_Content_Elements extends _01_Base_POM {
   public List<WebElement> nameList;
 
 
-  public WebElement getAddButton() {
-    return addButton;
-  }
+  public WebElement getAddButton() {return addButton; }
+  public WebElement getAddButton2(){return addButton2;}
 
-  public WebElement getNameInput() {
-    return nameInput;
-  }
+  public WebElement getSearchField(){return searchField;}
+
+  public WebElement getNameInput() { return nameInput; }
+  public WebElement getCodeInput() { return codeInput; }
 
   public WebElement getSaveButton() {
     return saveButton;
@@ -68,9 +76,7 @@ public class _03_Dialog_Content_Elements extends _01_Base_POM {
   public WebElement getSearchButton() {
     return searchButton;
   }
-  public WebElement getSearchInput2() {
-    return searchInput2;
-  }
+  public WebElement getSearchInput2() {return searchInput2; }
 
   public WebElement getEditButton() {
     return editButton;
