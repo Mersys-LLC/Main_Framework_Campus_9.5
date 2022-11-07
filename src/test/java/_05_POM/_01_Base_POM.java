@@ -41,7 +41,10 @@ public class _01_Base_POM {
   }
   public void scrollToElement(WebElement element) {
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+   //js.executeScript("window.scrollBy(0,1000)");
+    js.executeScript("arguments[0].scroll(0,3000);", element);
     js.executeScript("arguments[0].scrollIntoView();", element);
+//  js.executeScript("arguments[0].click();", element);
   }
   public void clickFunction(WebElement element) {
     waitUntilVisibleAndClickable(element);
