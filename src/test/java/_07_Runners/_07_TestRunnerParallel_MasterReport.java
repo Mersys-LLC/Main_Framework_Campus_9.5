@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 @CucumberOptions(
-    tags = "@Regression",
+    tags = "@SmokeTest",
     features = {"src/test/java/_01_FeatureFiles/"},
     glue = {"_06_StepDefinitions"},
     plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json"}// master report
