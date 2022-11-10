@@ -22,9 +22,9 @@ public class _03_Dialog_Content_Elements extends _01_Base_POM {
   private WebElement successMessage;
   @FindBy(xpath = "//div[contains(text(),'already exists')]")
   private WebElement alreadyExist;
-  @FindBy(xpath = "(//div[contains(@class,'mat-form-field-infix ng-tns')])[1]")
+  @FindBy(xpath = "//input[@data-placeholder='Name']")
   private WebElement searchInput;
-  @FindBy(xpath = "(//div[contains(@class,'mat-form-field-infix ng-tns-c74')]//input)[2]")
+  @FindBy(xpath = "(//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input)[2]")
   private WebElement searchInput2;
   @FindBy(xpath = "//ms-search-button//button")
   private WebElement searchButton;

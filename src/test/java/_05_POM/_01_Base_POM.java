@@ -34,7 +34,6 @@ public class _01_Base_POM {
     wait.until(ExpectedConditions.visibilityOf(element));
     wait.until(ExpectedConditions.elementToBeClickable(element));
   }
-
   public List<WebElement> waitUntilVisibleAllElement(List<WebElement> elementList) {
     wait.until(ExpectedConditions.visibilityOfAllElements(elementList));
     return elementList;

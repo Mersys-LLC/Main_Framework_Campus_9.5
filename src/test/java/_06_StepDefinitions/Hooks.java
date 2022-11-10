@@ -22,6 +22,7 @@ public class Hooks{
 
   @Before
   public void setup() {
+
     driver.get("https://demo.mersys.io/");
     driver.manage().window().maximize();
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
