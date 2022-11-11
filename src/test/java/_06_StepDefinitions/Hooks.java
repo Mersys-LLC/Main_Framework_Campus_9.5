@@ -1,6 +1,7 @@
 package _06_StepDefinitions;
 
 import _05_POM.Login_Page_Elements;
+import _05_POM._02_Navigation_Bar_Elements;
 import _08_Utils.Driver;
 import _08_Utils.ExcelUtility;
 import io.cucumber.java.After;
@@ -16,9 +17,10 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-public class Hooks{
+public class Hooks {
+
   WebDriver driver = Driver.getDriver();
-  Login_Page_Elements lp =new Login_Page_Elements();
+  Login_Page_Elements lp = new Login_Page_Elements();
 
   @Before
   public void setup() {
@@ -26,22 +28,20 @@ public class Hooks{
     driver.get("https://demo.mersys.io/");
     driver.manage().window().maximize();
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    lp.clickFunction(lp.getAcceptCookiesButton());
-    lp.sendKeysFunction(lp.getUsernameInput(), "richfield.edu");
-    lp.sendKeysFunction(lp.getPasswordInput(), "Richfield2020!");
-    lp.clickFunction(lp.getLoginButton());
-   }
-  @After
-  public void tearDown(Scenario scenario){
+    lp.loginFunctionCredential();
+  }
 
-    System.out.println("Scenario result="+ scenario.getStatus());
+  @After
+  public void tearDown(Scenario scenario) {
+
+    System.out.println("Scenario result=" + scenario.getStatus());
 
     LocalDateTime dateTime = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
     String formatLocalDateTime = dateTime.format(formatter);
 
     ExcelUtility.writeExcel("src/test/java/_02_ApachePOI/Resources/ScenarioStatus.xlsx",
-        scenario, Driver.threadBrowserName.get(),formatLocalDateTime);
+        scenario, Driver.threadBrowserName.get(), formatLocalDateTime);
 
     if (scenario.isFailed()) {
       TakesScreenshot screenshot = ((TakesScreenshot) driver); // which driver to get a screenshot
@@ -58,8 +58,8 @@ public class Hooks{
     }
     Driver.quitDriver();
   }
-  public String getBase64Screenshot()
-  {
+
+  public String getBase64Screenshot() {
     return ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BASE64);
   }
 }
