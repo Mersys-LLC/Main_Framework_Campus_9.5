@@ -41,6 +41,7 @@ public class Login_Page_Elements extends _01_Base_POM {
   }
 
   public void loginFunction(String data1, String data2) {
+    sleep();
     getAcceptCookiesButton().click();
     getUsernameInput().sendKeys(data1);
     getPasswordInput().sendKeys(data2);

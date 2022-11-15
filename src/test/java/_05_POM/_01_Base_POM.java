@@ -58,9 +58,9 @@ public class _01_Base_POM {
     select.selectByValue(text);
   }
   public void validationText(WebElement element, String text) {
-//    waitUntilVisibleAndClickable(element);
-    Assert.assertTrue(element.isDisplayed());
-    Assert.assertTrue(element.getText().toLowerCase().contains(text.toLowerCase()));
+      waitUntilVisibleAndClickable(element);
+//    Assert.assertTrue(element.isDisplayed());
+   Assert.assertTrue(element.getText().toLowerCase().contains(text.toLowerCase()));
   }
 
   public void randomDataName(WebElement element, String getRandomName){
