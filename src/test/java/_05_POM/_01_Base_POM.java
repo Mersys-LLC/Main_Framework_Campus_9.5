@@ -1,7 +1,9 @@
 package _05_POM;
 
 import _08_Utils.Driver;
+import _08_Utils.ExcelUtility;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
@@ -15,6 +17,7 @@ import org.testng.Assert;
 public class _01_Base_POM {
 
   WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(30));
+
 
   public void waitUntilLoading(){
     wait.until(
@@ -55,9 +58,9 @@ public class _01_Base_POM {
     select.selectByValue(text);
   }
   public void validationText(WebElement element, String text) {
-    waitUntilVisibleAndClickable(element);
-    Assert.assertTrue(element.isDisplayed());
-    Assert.assertTrue(element.getText().toLowerCase().contains(text.toLowerCase()));
+      waitUntilVisibleAndClickable(element);
+//    Assert.assertTrue(element.isDisplayed());
+   Assert.assertTrue(element.getText().toLowerCase().contains(text.toLowerCase()));
   }
 
   public void randomDataName(WebElement element, String getRandomName){

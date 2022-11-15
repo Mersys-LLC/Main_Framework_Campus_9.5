@@ -112,15 +112,15 @@ public class _04_Discount_Steps_Nil {
 
     @Then("Success message should displayed")
     public void successMessageShouldDisplayed() {
-        dc.validationText(dc.getSuccessMessage(),"It is successfully displayed."); }
+        dc.validationText(dc.getSuccessMessage(),"successfully"); }
 
     @Then("Exist message should displayed")
     public void existMessageShouldDisplayed() {
-        dc.validationText(dc.getAlreadyExist(),"It is already exist.");
+        dc.validationText(dc.getAlreadyExist(),"exist");
     }
 
     @Then("There is no data should displayed")
     public void thereIsNoDataShouldDisplayed() {
-        dc.validationText(dc.getNoDataMessage(), "It is no data.");
+        dc.validationText(dc.getNoDataMessage(), "no");
     }
 }

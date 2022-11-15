@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
 public class _02_Navigation_Bar_Elements_Joseph extends _01_Base_POM_Joseph {
+
 
   public _02_Navigation_Bar_Elements_Joseph(){
     PageFactory.initElements(Driver.getDriver(),this);

@@ -14,18 +14,23 @@ public class DBUtility {
   protected static Statement statement;
 
   protected static void DBConnectionOpen() { // we change this static coz we will call this method in static
-    // this can be private or protected but protected when we need to use in other class
 
-    String url = "jdbc:mysql://db-technostudy.ckr1jisflxpv.us-east-1.rds.amazonaws.com:3306/yyoldas"; // hostname,port,db name
-    String username = "root";
-    String password = "'\"-LhCB'.%k[4S]z";
+    ArrayList<ArrayList<String>> data =
+        ExcelUtility.getListData("src/test/java/_02_ApachePOI/Resources/LoginData.xlsx",
+            "LoginDB", 3);
+    for (ArrayList<String> row : data) {
 
-    try {
-      connection = DriverManager.getConnection(url, username, password);
-      statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-          ResultSet.CONCUR_READ_ONLY); //sql page open like mysql to write query
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
+      String url = row.get(2); // hostname,port,db name
+      String username = row.get(0);
+      String password = row.get(1);
+
+      try {
+        connection = DriverManager.getConnection(url, username, password);
+        statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            ResultSet.CONCUR_READ_ONLY); //sql page open like mysql to write query
+      } catch (SQLException e) {
+        throw new RuntimeException(e);
+      }
     }
 
   }
