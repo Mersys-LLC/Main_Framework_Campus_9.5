@@ -16,7 +16,7 @@ Feature:Fields Feature
     Then Exist message should be displayed
 
 
-  @SmokeTest
+  @SmokeTest @Rerun
   Scenario Outline: Edit Fields
     And User edit field "<existingFieldName>" and change it to "<newFieldName>"
     Then Success message should be displayed
