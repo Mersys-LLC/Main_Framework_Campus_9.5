@@ -49,7 +49,7 @@ public class Login_Page_Elements extends _01_Base_POM {
 
   public void loginFunctionCredential() {
     ArrayList<ArrayList<String>> data =
-        ExcelUtility.getListData("src/test/java/_02_ApachePOI/Resources/ApacheExcel22.xlsx",
+        ExcelUtility.getListData("src/test/java/_02_ApachePOI/Resources/LoginData.xlsx",
             "Login", 2);
     for (ArrayList<String> row : data) {
       loginFunction(row.get(0), row.get(1));
