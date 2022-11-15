@@ -17,14 +17,12 @@ public class _03_Dialog_Content_Elements_Joseph extends _01_Base_POM_Joseph {
 
   @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
   private WebElement addButton;
-
   @FindBy(xpath = "//ms-add-button[contains(@tooltip,'GENERAL.BUTTON.ADD')]//button")
   private WebElement addButton2;
   @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
   private WebElement nameInput;
   @FindBy(xpath = "//ms-text-field[@formcontrolname='code']//input")
   private WebElement codeInput;
-
   @FindBy(xpath = "//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input")
   private WebElement searchField;
   @FindBy(xpath = "//ms-save-button//button")

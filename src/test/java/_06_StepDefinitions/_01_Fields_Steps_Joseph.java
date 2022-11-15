@@ -95,4 +95,18 @@ public class _01_Fields_Steps_Joseph {
         dc.waitUntilLoading();
     }
 
+    @Then("Success message need to be displayed")
+    public void successMessageNeedToBeDisplayed() {
+        dc.validationText(dc.getSuccessMessage(), "successfully");
+    }
+
+    @Then("Exist message need to be displayed")
+    public void existMessageNeedToBeDisplayed() {
+        dc.validationText(dc.getAlreadyExist(), "exist");
+    }
+
+    @Then("There is no data need to be displayed")
+    public void thereIsNoDataNeedToBeDisplayed() {
+        dc.validationText(dc.getNoDataMessage(), "no");
+    }
 }

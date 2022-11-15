@@ -16,7 +16,6 @@ public class _02_Navigation_Bar_Elements_Joseph extends _01_Base_POM_Joseph {
   @FindBy(xpath="(//span[text()='Setup'])[1]")
   private WebElement setupOne;
 
-
   @FindBy(xpath = "//span[text()='Parameters']")
   private WebElement parameters;
 
@@ -32,11 +31,6 @@ public class _02_Navigation_Bar_Elements_Joseph extends _01_Base_POM_Joseph {
     return parameters;
   }
 
-  public WebElement getNationalities() {
-    return nationalities;
-  }
   public WebElement getFields() { return fields; }
-
-
 
 }
