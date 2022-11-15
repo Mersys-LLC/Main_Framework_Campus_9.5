@@ -9,7 +9,7 @@ Feature:Fields Feature
       | name         | code   |
       | JoseFieldOne | 123451 |
 
-  @SmokeTest
+  @SmokeTest @Rerun
   Scenario: Add Fields Negative
     When User add same field name
       | JoseFieldOne | 123451 |
