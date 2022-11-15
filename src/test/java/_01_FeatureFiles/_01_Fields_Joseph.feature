@@ -21,8 +21,8 @@ Feature:Fields Feature
     And User edit field "<existingFieldName>" and change it to "<newFieldName>"
     Then Success message should be displayed
     Examples:
-      | existingFieldName | newFieldName |
-      | JoseFieldOne | JoseUpdatedField |
+      | existingFieldName | newFieldName     |
+      | JoseFieldOne      | JoseUpdatedField |
 
 
   @SmokeTest
@@ -30,7 +30,7 @@ Feature:Fields Feature
     Given User delete field "<name>"
     Then Success message should be displayed
     Examples:
-      | name         |
+      | name             |
       | JoseUpdatedField |
 
   @SmokeTest
@@ -38,5 +38,5 @@ Feature:Fields Feature
     When user search deleted "<name>" in search input
     Then There is no data should be displayed
     Examples:
-      | name         |
+      | name             |
       | JoseUpdatedField |

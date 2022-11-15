@@ -1,14 +1,12 @@
 package _06_StepDefinitions;
 
-import _05_POM._02_Navigation_Bar_Elements;
 import _05_POM._02_Navigation_Bar_Elements_Joseph;
-import _05_POM._03_Dialog_Content_Elements;
 import _05_POM._03_Dialog_Content_Elements_Joseph;
 import io.cucumber.java.en.*;
 import org.testng.annotations.Test;
 import java.util.List;
 
-public class _01_Fields_Steps {
+public class _01_Fields_Steps_Joseph {
 
     _02_Navigation_Bar_Elements_Joseph nb =new _02_Navigation_Bar_Elements_Joseph();
     _03_Dialog_Content_Elements_Joseph dc= new _03_Dialog_Content_Elements_Joseph();
