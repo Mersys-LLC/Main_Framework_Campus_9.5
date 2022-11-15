@@ -7,9 +7,9 @@ import org.testng.annotations.Listeners;
 
 
 @CucumberOptions(
-//    tags = "@Apache",
+   tags = "@DBTest",
 //    tags = "@Regression",
-    tags = "@DBrun",
+//    tags = "@DBrun",
     features = {"src/test/java/_01_FeatureFiles/"},
     glue = {"_06_StepDefinitions"}
 )
