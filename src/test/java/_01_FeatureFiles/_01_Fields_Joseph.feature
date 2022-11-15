@@ -1,6 +1,6 @@
 Feature:Fields Feature
 
-  @SmokeTest
+  @SmokeTest @Rerun
   Scenario Outline: Add Fields Positive
     Given User add field "<name>" and "<code>"
     Then Success message should be displayed
@@ -9,14 +9,14 @@ Feature:Fields Feature
       | name         | code   |
       | JoseFieldOne | 123451 |
 
-  @SmokeTest
+  @SmokeTest @Rerun
   Scenario: Add Fields Negative
     When User add same field name
       | JoseFieldOne | 123451 |
     Then Exist message should be displayed
 
 
-  @SmokeTest
+  @SmokeTest @Rerun
   Scenario Outline: Edit Fields
     And User edit field "<existingFieldName>" and change it to "<newFieldName>"
     Then Success message should be displayed
