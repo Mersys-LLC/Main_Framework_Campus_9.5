@@ -33,7 +33,7 @@ public class Hooks {
   @After
   public void tearDown(Scenario scenario) {
 
-    System.out.println("Scenario result=" + scenario.getStatus());
+    System.out.println("Scenario Result=" + scenario.getStatus());
 
     LocalDateTime dateTime = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
