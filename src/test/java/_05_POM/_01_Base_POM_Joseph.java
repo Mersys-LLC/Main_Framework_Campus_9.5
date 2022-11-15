@@ -54,7 +54,7 @@ public class _01_Base_POM_Joseph {
   }
   public void validationText(WebElement element, String text) {
     waitUntilVisibleAndClickable(element);
-    Assert.assertTrue(element.isDisplayed());
+    //Assert.assertTrue(element.isDisplayed());
     Assert.assertTrue(element.getText().toLowerCase().contains(text.toLowerCase()));
   }
 
