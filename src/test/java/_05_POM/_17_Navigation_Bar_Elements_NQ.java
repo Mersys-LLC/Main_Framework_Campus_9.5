@@ -14,12 +14,14 @@ public class _17_Navigation_Bar_Elements_NQ extends _17_Base_POM_NQ{
 
     @FindBy(xpath = "//span[text()='Setup']")
     private WebElement setupPage;
-
     @FindBy(xpath = "//span[text()='Parameters']")
     private WebElement parametersPage;
-
     @FindBy(xpath = "//span[text()='Grade Levels']")
     private WebElement gradeLevelsPage;
+    @FindBy(xpath = "//span[text()='School Setup']")
+    private WebElement schoolSetupPage;
+    @FindBy(xpath = "//span[text()='Schools (Admin)']")
+    private WebElement schoolsAdminPage;
 
 
 
@@ -35,6 +37,13 @@ public class _17_Navigation_Bar_Elements_NQ extends _17_Base_POM_NQ{
         return gradeLevelsPage;
     }
 
+    public WebElement getSchoolSetupPage() {
+        return schoolSetupPage;
+    }
+
+    public WebElement getSchoolsAdminPage() {
+        return schoolsAdminPage;
+    }
 
 
 
