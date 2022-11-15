@@ -7,8 +7,8 @@ import org.testng.annotations.AfterClass;
 
 
 @CucumberOptions(
-    tags = "@SmokeTest",
-//  tags = "@Rerun",
+    //tags = "@SmokeTest",
+   tags = "@Run",
     features = {"src/test/java/_01_FeatureFiles/"},
     glue = {"_06_StepDefinitions"},
     plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json"}

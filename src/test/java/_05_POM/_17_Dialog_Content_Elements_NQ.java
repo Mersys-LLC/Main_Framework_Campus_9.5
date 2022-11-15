@@ -71,6 +71,8 @@ public class _17_Dialog_Content_Elements_NQ extends _17_Base_POM_NQ {
     private WebElement unsuccessfullyDeletedMessage;
 
 
+
+
     //Academic Period functionality elements
     @FindBy(xpath = "//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input")
     private WebElement nameInputAcPer;
@@ -104,6 +106,9 @@ public class _17_Dialog_Content_Elements_NQ extends _17_Base_POM_NQ {
 
     @FindBy(xpath = "//ms-delete-button[@buttonbar='true']//button")
     private WebElement deleteAcPerButton;
+
+    @FindBy(xpath = "//div[contains(text(), 'success')]")
+    private WebElement successMessages;
 
 
     //  Grade Levels getters
@@ -225,4 +230,7 @@ public class _17_Dialog_Content_Elements_NQ extends _17_Base_POM_NQ {
         return deleteAcPerButton;
     }
 
+    public WebElement getSuccessMessages() {
+        return successMessages;
+    }
 }

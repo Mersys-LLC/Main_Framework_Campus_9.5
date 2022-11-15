@@ -1,16 +1,16 @@
 Feature: Academic Period functionality
 
-  @nigar
+  @SmokeTest @Run
   Scenario Outline: Add Academic Period Positive
     Given User add Academic Period "<name>", "<startDate>", "<endDate>"
-    Then User should see successful message
+    Then User should see successfully added message
 
     Examples:
     |   name   | startDate  |  endDate |
     | season1  | 12/01/2022 |01/01/2023|
 
 
-  @nigar
+  @SmokeTest @Run
   Scenario Outline: Add Academic Period Negative1
     Given User add same Academic Period name "<sameName>", "<sameStartDate>", "<sameEndDate>"
     Then User should see date range conflicts message
@@ -19,7 +19,7 @@ Feature: Academic Period functionality
       | sameName |sameStartDate|sameEndDate|
       | season1  |12/01/2022   |01/01/2023 |
 
-  @nigar
+  @SmokeTest @Run
   Scenario Outline: Add Academic Period Negative2
     Given User add same Academic Period name "<sameName>", different date range "<differentStartDate>", "<differentEndDate>"
     Then User should see already exists message
@@ -30,7 +30,7 @@ Feature: Academic Period functionality
 
 
 
-  @nigar
+  @SmokeTest @Run
   Scenario Outline: Add Academic Period Negative3
     Given User add different Academic Period name "<differentName>", "<sameStartDate>", "<sameEndDate>"
     Then User should see date range conflicts message
@@ -41,10 +41,10 @@ Feature: Academic Period functionality
 
 
 
-  @nigar
+  @SmokeTest @Run
   Scenario Outline: Edit Academic Period
     Given User edit Academic Period name "<newName>", date range "<newStartDate>", "<newEndDate>"
-    Then User should see successfully updated message
+    Then User should see successfully updated messages
 
     Examples:
     |newName|newStartDate|newEndDate|
@@ -53,10 +53,10 @@ Feature: Academic Period functionality
 
 
 
-  @nigar
+  @SmokeTest @Run
   Scenario: Delete Academic Period Positive
     Given User delete Academic Period
-    Then User should see successfully deleted message
+    Then User should see successfully deleted messages
 
 
 

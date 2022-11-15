@@ -39,7 +39,7 @@ public class _029_AcademicPeriod_Steps_NQ {
 
 
     @Given("User add same Academic Period name {string}, {string}, {string}")
-    public void userAddSameAcademicPeriodName(String sameName, String sameStartDate, String sameEndDate) {
+    public void userAddSameAcademicPeriodName(String sameName, String sameStartDate, String sameEndDate) throws InterruptedException {
         nb.sleep();
         nb.clickFunction(nb.getSetupPage());
         nb.clickFunction(nb.getSchoolSetupPage());
@@ -48,6 +48,7 @@ public class _029_AcademicPeriod_Steps_NQ {
         dc.clickFunction(dc.getNameInputAcPer());
         dc.sendKeysFunction(dc.getNameInputAcPer(), "YASIN YOLDAS");
         dc.clickFunction(dc.getSearchButton());
+        Thread.sleep(2000);
         dc.waitUntilVisibleAndClickable(dc.getAcademicPeriodButton());
         dc.clickFunction(dc.getAcademicPeriodButton());
         dc.waitUntilVisibleAndClickable(dc.getAddButtonAcPer());
@@ -168,18 +169,28 @@ public class _029_AcademicPeriod_Steps_NQ {
 
 
 
+    @Then("User should see successfully added message")
+    public void userShouldSeeSuccessfullyAddedMessage() {
+        dc.validationText(dc.getSuccessMessages(), "successfully");
+    }
+
     @Then("User should see already exists message")
     public void userShouldSeeAlreadyExistsMessage() {
         dc.validationText(dc.getAlreadyExistMessage(),"exist");
     }
-
-
 
     @Then("User should see date range conflicts message")
     public void userShouldSeeDateRangeConflictsMessage() {
         dc.validationText(dc.getConflictsMessage(),"conflicts");
     }
 
+    @Then("User should see successfully updated messages")
+    public void userShouldSeeSuccessfullyUpdatedMessages() {
+        dc.validationText(dc.getSuccessMessages(),"success");
+    }
 
-
+    @Then("User should see successfully deleted messages")
+    public void userShouldSeeSuccessfullyDeletedMessages() {
+        dc.validationText(dc.getSuccessMessages(),"success");
+    }
 }
