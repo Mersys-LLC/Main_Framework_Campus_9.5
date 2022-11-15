@@ -1,6 +1,6 @@
 Feature:Fields Feature
 
-  @SmokeTest
+  @SmokeTest @Rerun
   Scenario Outline: Add Fields Positive
     Given User add field "<name>" and "<code>"
     Then Success message should be displayed
