@@ -46,7 +46,7 @@ public class _029_AcademicPeriod_Steps_NQ {
         nb.clickFunction(nb.getSchoolsAdminPage());
         dc.waitUntilVisibleAndClickable(dc.getNameInputAcPer());
         dc.clickFunction(dc.getNameInputAcPer());
-        dc.sendKeysFunction(dc.getNameInputAcPer(), "YASIN");
+        dc.sendKeysFunction(dc.getNameInputAcPer(), "YASIN YOLDAS");
         dc.clickFunction(dc.getSearchButton());
         Thread.sleep(2000);
         dc.waitUntilVisibleAndClickable(dc.getAcademicPeriodButton());
