@@ -4,10 +4,12 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 import _04_API_POJO.Model.Nationalities;
+import _08_Utils.ExcelUtility;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
 import io.restassured.specification.RequestSpecification;
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeClass;
@@ -23,16 +25,24 @@ public class _02_NationalitiesTest {
   @BeforeClass
   public void setup() {
 
+
     RestAssured.baseURI = "https://demo.mersys.io";
 
     reqSpec = given()
         .log().body()
         .contentType(ContentType.JSON);
 
-    credentials.put("username", "richfield.edu");
-    credentials.put("password", "Richfield2020!");
-    credentials.put("rememberMe", "true");
+    ArrayList<ArrayList<String>> data =
+        ExcelUtility.getListData("src/test/java/_02_ApachePOI/Resources/LoginData.xlsx",
+            "Login", 2);
+    for (ArrayList<String> row : data) {
+      String username = row.get(0);
+      String password = row.get(1);
 
+    credentials.put("username", username);
+    credentials.put("password", password);
+    credentials.put("rememberMe", "true");
+    }
     cookies = given()
         .spec(reqSpec)
         .body(credentials)
