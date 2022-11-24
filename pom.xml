@@ -126,20 +126,20 @@
   </dependencies>
 
 <!--    XML TestNG Run here for TestNG Report in Jenkins-->
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M1</version>
-        <configuration>
-          <suiteXmlFiles>
-            <suiteXmlFile>src/test/java/_09_XMLFiles/_08_API_Testing.xml</suiteXmlFile>
-          </suiteXmlFiles>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+<!--  <build>-->
+<!--    <plugins>-->
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-surefire-plugin</artifactId>-->
+<!--        <version>3.0.0-M1</version>-->
+<!--        <configuration>-->
+<!--          <suiteXmlFiles>-->
+<!--            <suiteXmlFile>src/test/java/_09_XMLFiles/_08_API_Testing.xml</suiteXmlFile>-->
+<!--          </suiteXmlFiles>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
+<!--  </build>-->
 
 <!--  <build>-->
 <!--    <plugins>-->
@@ -191,22 +191,22 @@
   <!--Jenkins te @Smoke Ve @Regression yapmak icin asagida runner classlari cagirtcam-->
   <!--XML acmaya gerek yok src extra cunku runnerlardan calsitircam-->
 
-<!--  <build>-->
-<!--    <plugins>-->
-<!--      <plugin>&lt;!&ndash;En sade halde derlemek için bunu aptim ve boylece Jenkins de calistirim&ndash;&gt;-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-surefire-plugin</artifactId>-->
-<!--        <version>3.0.0-M1</version>-->
-<!--        <configuration>-->
-<!--          <includes>-->
-            <!-- for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   -->
-<!--            <include>**/_02_TestRunnerSmoke_MasterReport.java</include>-->
-<!--          </includes>-->
-<!--          <testFailureIgnore>true</testFailureIgnore>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
-<!--    </plugins>-->
-<!--  </build>-->
+  <build>
+    <plugins>
+      <plugin><!--En sade halde derlemek için bunu aptim ve boylece Jenkins de calistirim-->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M1</version>
+        <configuration>
+          <includes>
+             for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor
+            <include>**/_02_TestRunnerSmoke_MasterReport.java</include>
+          </includes>
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 <!--  <profiles> &lt;!&ndash;@Smoke ve @Regression Calistirmak icin lazim profiles ona gore build larimi koyom&ndash;&gt;-->
 <!--    &lt;!&ndash;Boylece Jenkins te ayara degistirmeden sadece burda profile ekleyerekk hizli yapabilirim&ndash;&gt;-->
