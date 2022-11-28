@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 
-public class _03_Dialog_Content_Elements_Joseph extends _01_Base_POM_Joseph {
+public class _03_Dialog_Content_Elements_Joseph extends _01_Base_POM {
 
 
   public _03_Dialog_Content_Elements_Joseph() {
