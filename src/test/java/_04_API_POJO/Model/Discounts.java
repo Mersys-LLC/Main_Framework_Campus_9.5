@@ -1,6 +1,6 @@
 package _04_API_POJO.Model;
 
-public class Discounts_Nil {
+public class Discounts {
 
     private String id;
 

@@ -1,6 +1,6 @@
 package _04_API_POJO;
 
-import _04_API_POJO.Model.Discounts_Nil;
+import _04_API_POJO.Model.Discounts;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
@@ -13,11 +13,11 @@ import java.util.HashMap;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class _03_DiscountsTest_Nil {
+public class _04_DiscountsTest {
     private RequestSpecification reqSpec;
     private HashMap<String, String> credentials = new HashMap<>();
     private Cookies cookies;
-    private Discounts_Nil discount = new Discounts_Nil();
+    private Discounts discount = new Discounts();
 @BeforeClass
 public void setup()  {
 
