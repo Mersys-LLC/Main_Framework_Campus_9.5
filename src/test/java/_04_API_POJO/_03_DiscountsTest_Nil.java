@@ -117,19 +117,6 @@ public void setup()  {
             .log().body()
             .statusCode(200);
 }
-/*
-    @Test(priority = 5)
-    public void getDiscountTest() {
-        given()
-                .spec(reqSpec)
-                .cookies(cookies)
-                .when()
-                .get( "/school-service/api/discounts/" + discount.getId())
-                .then()
-                .statusCode(400);
-    }
-
-
     @Test(priority = 5)
     public void deleteDiscountNegativeTest() {
         given()
@@ -139,8 +126,6 @@ public void setup()  {
                 .delete("/school-service/api/discounts/" + discount.getId())
                 .then()
                 .log().body()
-                .statusCode(404);
+                .statusCode(400);
     }
-    */
-
 }
