@@ -15,9 +15,4 @@ public class _05_Sql_Examples extends JDBC_Parent{
     System.out.println(rc.getInt(2)); // city can not return coz of type needs to be String
 
   }
-
-
-
-
-
 }

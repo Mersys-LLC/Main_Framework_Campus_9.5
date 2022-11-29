@@ -5,8 +5,10 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 import _04_API_POJO.Model.Country;
+import _08_Utils.ExcelUtility;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -20,24 +22,29 @@ public class _01_CountryTest {
   public void loginCampus() {
     baseURI = "https://demo.mersys.io/";
 
-    Map<String, String> credential = new HashMap<>();
-    credential.put("username", "richfield.edu");
-    credential.put("password", "Richfield2020!");
-    credential.put("rememberMe", "true");
+    ArrayList<ArrayList<String>> data =
+        ExcelUtility.getListData("src/test/java/_02_ApachePOI/Resources/LoginData.xlsx",
+            "Login", 2);
+    for (ArrayList<String> row : data) {
+      String username = row.get(0);
+      String password = row.get(1);
+      Map<String, String> credential = new HashMap<>();
+      credential.put("username", username);
+      credential.put("password", password);
+      credential.put("rememberMe", "true");
+      cookies =
+          given()
+              .contentType(ContentType.JSON)
+              .body(credential)
 
-    cookies=
-        given()
-            .contentType(ContentType.JSON)
-            .body(credential)
+              .when()
+              .post("auth/login")
 
-            .when()
-            .post("auth/login")
-
-            .then()
-            //.log().cookies()
-            .statusCode(200)
-            .extract().response().getDetailedCookies()// cookies comes from here
-    ;
+              .then()
+              //.log().cookies()
+              .statusCode(200)
+              .extract().response().getDetailedCookies();// cookies comes from here
+    }
   }
 
   String countryID;

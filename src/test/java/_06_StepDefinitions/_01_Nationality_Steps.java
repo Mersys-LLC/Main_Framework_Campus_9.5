@@ -11,14 +11,13 @@ import org.testng.annotations.Test;
 
 public class _01_Nationality_Steps {
 
-  _02_Navigation_Bar_Elements nb =new _02_Navigation_Bar_Elements();
-  _03_Dialog_Content_Elements dc= new _03_Dialog_Content_Elements();
+  _02_Navigation_Bar_Elements nb = new _02_Navigation_Bar_Elements();
+  _03_Dialog_Content_Elements dc = new _03_Dialog_Content_Elements();
 
-  @Test(priority =1, enabled = true)
+  @Test(priority = 1, enabled = true)
   @Given("User add nation {string}")
-  public void userAddNation(String name){
+  public void userAddNation(String name) {
     nb.sleep();
-//    nb.setupOne.click();
     nb.clickFunction(nb.getSetupOne());
     nb.clickFunction(nb.getParameters());
     nb.clickFunction(nb.getNationalities());
@@ -27,7 +26,7 @@ public class _01_Nationality_Steps {
     dc.clickFunction(dc.getSaveButton());
   }
 
-  @Test(priority =2,enabled=true)
+  @Test(priority = 2, enabled = true)
   @When("User add same nation name")
   public void userAddSameNationName(DataTable dataTable) {
     nb.sleep();
@@ -43,35 +42,24 @@ public class _01_Nationality_Steps {
     }
   }
 
-  @Test(priority =3,enabled=true)
-  @Given("User edit Nation Name")
-  public void userEditNationName(DataTable dataTable) {
+  @Test(priority = 3, enabled = true)
+  @Given("User edit Nation {string} to new Nation {string}")
+  public void userEditNationToNewNation(String data1, String data2) {
     nb.clickFunction(nb.getSetupOne());
     nb.clickFunction(nb.getParameters());
     nb.clickFunction(nb.getNationalities());
     nb.waitUntilLoading();
 
-    List<List<String>> testData = dataTable.asLists();
-
-    nb.clearFunction(dc.getSearchInput());
-    dc.sendKeysFunction(dc.getSearchInput(), testData.get(0).get(0));
+    dc.clickFunction(dc.getSearchInput());
+    dc.sendKeysFunction(dc.getSearchInput(), data1);
     dc.clickFunction(dc.getSearchButton());
     dc.sleep();
     dc.clickFunction(dc.getEditButton());
     dc.clearFunction(dc.getSearchInput2());
-    dc.sendKeysFunction(dc.getSearchInput2(), "UKY1");
+    dc.sendKeysFunction(dc.getSearchInput2(), data2);
     dc.clickFunction(dc.getSaveButton());
 
-    dc.clearFunction(dc.getSearchInput());
-    dc.sendKeysFunction(dc.getSearchInput(), testData.get(0).get(1));
-    dc.clickFunction(dc.getSearchButton());
-    dc.sleep();
-    dc.clickFunction(dc.getEditButton());
-    dc.clearFunction(dc.getSearchInput2());
-    dc.sendKeysFunction(dc.getSearchInput2(), "RUY2");
-    dc.clickFunction(dc.getSaveButton());
   }
-
   @Test(priority = 4)
   @Given("User delete nation {string}")
   public void userDeleteNation(String name) {
@@ -80,8 +68,9 @@ public class _01_Nationality_Steps {
     nb.clickFunction(nb.getParameters());
     nb.clickFunction(nb.getNationalities());
     dc.waitUntilLoading();
-    dc.clearFunction(dc.getSearchInput());
-    dc.sendKeysFunction(dc.getSearchInput(),name);
+
+    dc.clickFunction(dc.getSearchInput());
+    dc.sendKeysFunction(dc.getSearchInput(), name);
     dc.clickFunction(dc.getSearchButton());
     dc.waitUntilLoading();
     dc.clickFunction(dc.getDeleteButton());
@@ -114,6 +103,7 @@ public class _01_Nationality_Steps {
   public void thereIsNoDataShouldBeDisplayed() {
     dc.validationText(dc.getNoDataMessage(), "no");
   }
+
 
 }
 

@@ -125,6 +125,22 @@
     </dependency>
   </dependencies>
 
+<!--    XML TestNG Run here for TestNG Report in Jenkins-->
+<!--  <build>-->
+<!--    <plugins>-->
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-surefire-plugin</artifactId>-->
+<!--        <version>3.0.0-M1</version>-->
+<!--        <configuration>-->
+<!--          <suiteXmlFiles>-->
+<!--            <suiteXmlFile>src/test/java/_09_XMLFiles/_08_API_Testing.xml</suiteXmlFile>-->
+<!--          </suiteXmlFiles>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
+<!--  </build>-->
+
 <!--  <build>-->
 <!--    <plugins>-->
 <!--      <plugin>&lt;!&ndash;derlemek için&ndash;&gt;-->
@@ -132,15 +148,15 @@
 <!--        <artifactId>maven-surefire-plugin</artifactId>-->
 <!--        <version>3.0.0-M1</version>-->
 <!--        <configuration>-->
-<!--          &lt;!&ndash; XML paralel çalışmada master report için kondu&ndash;&gt;-->
-<!--          &lt;!&ndash;  <suiteXmlFiles>&ndash;&gt;-->
-<!--          &lt;!&ndash;  <suiteXmlFile>_03_Jenkins_Test.xml</suiteXmlFile>&ndash;&gt;-->
-<!--          &lt;!&ndash; </suiteXmlFiles>&ndash;&gt;-->
-<!--          &lt;!&ndash; Paralele çalışma yok iken diren runner class çalıştırmak aşağıdaki bölüm kullanılır&ndash;&gt;-->
+          <!-- XML paralel çalışmada master report için kondu-->
+          <!--  <suiteXmlFiles>-->
+          <!--  <suiteXmlFile>_03_Jenkins_Test.xml</suiteXmlFile>-->
+          <!-- </suiteXmlFiles>-->
+          <!-- Paralele çalışma yok iken diren runner class çalıştırmak aşağıdaki bölüm kullanılır-->
 <!--          <includes>-->
-<!--            &lt;!&ndash; for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor &ndash;&gt;-->
-<!--            <include>**\_02_TestRunnerSmoke.java</include>&ndash;&gt;-->
-<!--            &lt;!&ndash;<include>**/runners/*TestRunner*.java</include>&ndash;&gt;-->
+            <!-- for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor -->
+<!--            <include>**\_02_TestRunnerSmoke_MasterReport.java</include>&ndash;&gt;-->
+            <!--<include>**/runners/*TestRunner*.java</include>-->
 <!--          </includes>-->
 <!--          <testFailureIgnore>true</testFailureIgnore>-->
 <!--        </configuration>-->
@@ -183,8 +199,8 @@
         <version>3.0.0-M1</version>
         <configuration>
           <includes>
-            <!-- for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   -->
-            <include>**/_02_TestRunnerSmoke.java</include>
+             for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor
+            <include>**/_02_TestRunnerSmoke_MasterReport.java</include>
           </includes>
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
@@ -192,56 +208,56 @@
     </plugins>
   </build>
 
-  <profiles><!--@Smoke ve @Regression Calistirmak icin lazim profiles ona gore build larimi koyom-->
-    <!--Boylece Jenkins te ayara degistirmeden sadece burda profile ekleyerekk hizli yapabilirim-->
-    <profile>
-      <id>Smoke_Test</id>
-      <build>
-        <plugins>
-          <plugin><!--derlemek için-->
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.0.0-M1</version>
-            <configuration>
+<!--  <profiles> &lt;!&ndash;@Smoke ve @Regression Calistirmak icin lazim profiles ona gore build larimi koyom&ndash;&gt;-->
+<!--    &lt;!&ndash;Boylece Jenkins te ayara degistirmeden sadece burda profile ekleyerekk hizli yapabilirim&ndash;&gt;-->
+<!--    <profile>-->
+<!--      <id>Smoke_Test</id>-->
+<!--      <build>-->
+<!--        <plugins>-->
+<!--          <plugin>&lt;!&ndash;derlemek için&ndash;&gt;-->
+<!--            <groupId>org.apache.maven.plugins</groupId>-->
+<!--            <artifactId>maven-surefire-plugin</artifactId>-->
+<!--            <version>3.0.0-M1</version>-->
+<!--            <configuration>-->
 
-              <includes>
+<!--              <includes>-->
                 <!-- for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   -->
-                <include>**/_02_TestRunnerSmoke.java</include>
-              </includes>
-              <testFailureIgnore>true</testFailureIgnore>
+<!--                <include>**/_02_TestRunnerSmoke_MasterReport.java</include>-->
+<!--              </includes>-->
+<!--              <testFailureIgnore>true</testFailureIgnore>-->
 
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
+<!--            </configuration>-->
+<!--          </plugin>-->
+<!--        </plugins>-->
+<!--      </build>-->
 
-    </profile>
+<!--    </profile>-->
 
 
-    <profile>
-      <id>Regression_Test</id>
-      <build>
-        <plugins>
-          <plugin><!--derlemek için-->
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.0.0-M1</version>
-            <configuration>
+<!--    <profile>-->
+<!--      <id>Regression_Test</id>-->
+<!--      <build>-->
+<!--        <plugins>-->
+<!--          <plugin>&lt;!&ndash;derlemek için&ndash;&gt;-->
+<!--            <groupId>org.apache.maven.plugins</groupId>-->
+<!--            <artifactId>maven-surefire-plugin</artifactId>-->
+<!--            <version>3.0.0-M1</version>-->
+<!--            <configuration>-->
 
-              <includes>
+<!--              <includes>-->
                 <!-- for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   -->
-                <include>**/_06_API_Test_Nationalities.java</include>
-              </includes>
-              <testFailureIgnore>true</testFailureIgnore>
+<!--                <include>**/_02_NationalitiesTest.java</include>-->
+<!--              </includes>-->
+<!--              <testFailureIgnore>true</testFailureIgnore>-->
 
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
+<!--            </configuration>-->
+<!--          </plugin>-->
+<!--        </plugins>-->
+<!--      </build>-->
 
-    </profile>
+<!--    </profile>-->
 
-  </profiles>
+<!--  </profiles>-->
 
 
   <repositories>

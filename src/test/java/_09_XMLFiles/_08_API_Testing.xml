@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="API Main Testing">
+  <test name="API Test">
+    <classes>
+      <class name="_04_API_POJO._02_NationalitiesTest"></class>
+    </classes>
+  </test>
+</suite>

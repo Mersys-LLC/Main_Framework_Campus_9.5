@@ -8,21 +8,20 @@ Feature:Nationality Feature
     Examples:
       | name |
       | Tr15 |
-      | UK23 |
 
   @SmokeTest @Regression
   Scenario: Add Nationality Negative
     When User add same nation name
       | Tr15 |
-      | UK23 |
-
     Then Exist message should be displayed
 
   @SmokeTest @Rerun
-  Scenario: Edit Nationality
-    Given User edit Nation Name
-      | Tr15 | UK23 |
+  Scenario Outline: Edit Nationality
+    Given User edit Nation "<name>" to new Nation "<name2>"
     Then Success message should be displayed
+    Examples:
+      | name | name2 |
+      | Tr15 | UKY1  |
 
   @SmokeTest @Rerun
   Scenario Outline: Delete Nationality Positive
@@ -31,7 +30,6 @@ Feature:Nationality Feature
     Examples:
       | name |
       | UKY1 |
-      | RUY2 |
 
   @SmokeTest @Regression
   Scenario Outline: Delete Nationality Negative
@@ -40,7 +38,6 @@ Feature:Nationality Feature
     Examples:
       | name |
       | UKY1 |
-      | RUY2 |
 
 
 

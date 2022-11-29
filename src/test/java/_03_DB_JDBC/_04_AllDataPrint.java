@@ -46,6 +46,4 @@ public class _04_AllDataPrint extends JDBC_Parent {
     }
     System.out.println("total: "+count);
   }
-
-
 }

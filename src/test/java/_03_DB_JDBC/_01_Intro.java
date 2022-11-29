@@ -1,10 +1,12 @@
 package _03_DB_JDBC;
 
+import _08_Utils.ExcelUtility;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import org.testng.annotations.Test;
 
 public class _01_Intro {
@@ -12,24 +14,31 @@ public class _01_Intro {
   @Test
   public void test1() throws SQLException {
 
-    String url= "jdbc:mysql://db-technostudy.ckr1jisflxpv.us-east-1.rds.amazonaws.com:3306/sakila"; // hostname,port,db name
-    String username= "root";
-    String password= "'\"-LhCB'.%k[4S]z";
+    ArrayList<ArrayList<String>> data =
+        ExcelUtility.getListData("src/test/java/_02_ApachePOI/Resources/LoginData.xlsx",
+            "LoginDB2", 3);
+    for (ArrayList<String> row : data) {
 
-    Connection connection= DriverManager.getConnection(url,username,password); // make connection to database
-    Statement statement=connection.createStatement(); //sql page open like mysql to write query
-    ResultSet ra= statement.executeQuery("select* from actor");
+      String url = row.get(2); // hostname,port,db name
+      String username = row.get(0);
+      String password = row.get(1);
 
-    ra.next();
+      Connection connection = DriverManager.getConnection(url, username,
+          password); // make connection to database
+      Statement statement = connection.createStatement(); //sql page open like mysql to write query
+      ResultSet ra = statement.executeQuery("select* from actor");
 
-    String firstname= ra.getString("first_name");
-    String lastname= ra.getString("last_name");
+      ra.next();
 
-    System.out.println(firstname+" "+lastname);
+      String firstname = ra.getString("first_name");
+      String lastname = ra.getString("last_name");
 
-    connection.close();
+      System.out.println(firstname + " " + lastname);
+
+      connection.close();
 
 
+    }
   }
 
 }
