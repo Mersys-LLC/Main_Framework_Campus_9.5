@@ -29,32 +29,29 @@ public class _03_CitizenshipTest {
     @BeforeClass
     public void setup() {
 
-        baseURI = "https://demo.mersys.io/";
+        RestAssured.baseURI = "https://demo.mersys.io";
 
-        ArrayList<ArrayList<String>> data =
-                ExcelUtility.getListData("src/test/java/_02_ApachePOI/Resources/LoginData.xlsx",
-                        "Login", 2);
-        for (ArrayList<String> row : data) {
-            String username = row.get(0);
-            String password = row.get(1);
-            Map<String, String> credential = new HashMap<>();
-            credential.put("username", username);
-            credential.put("password", password);
-            credential.put("rememberMe", "true");
-            cookies =
-                    given()
-                            .contentType(ContentType.JSON)
-                            .body(credential)
+        reqSpec = given()
+                .log().body()
+                .contentType(ContentType.JSON);
 
-                            .when()
-                            .post("auth/login")
+        credentials = new HashMap<>();
+        credentials.put("username", "richfield.edu");
+        credentials.put("password", "Richfield2020!");
+        credentials.put("rememberMe", "true");
 
-                            .then()
-                            //.log().cookies()
-                            .statusCode(200)
-                            .extract().response().getDetailedCookies();// cookies comes fro
+        cookies = given()
+                .spec(reqSpec)
+                .body(credentials)
+                .when()
+                .post("/auth/login")
+                .then()
+                .log().body()
+                .statusCode(200)
+                .body("scope", equalTo("openid"))
+                .extract().detailedCookies();
 
-        }
+
     }
 
     @Test(priority = 1)
