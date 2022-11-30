@@ -1,6 +1,6 @@
 package _04_API_POJO.Model;
 
-public class GradeLevels_NQ {
+public class GradeLevels {
 
     private String name = "winter";
     private String newName = "summer";

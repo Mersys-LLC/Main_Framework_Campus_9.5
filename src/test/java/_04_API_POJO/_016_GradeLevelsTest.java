@@ -1,6 +1,6 @@
 package _04_API_POJO;
 
-import _04_API_POJO.Model.GradeLevels_NQ;
+import _04_API_POJO.Model.GradeLevels;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
@@ -13,13 +13,13 @@ import java.util.HashMap;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class _016_GradeLevelsTest_NQ {
+public class _016_GradeLevelsTest {
 
 
     private RequestSpecification reqSpec;
     private Cookies cookies;
     private HashMap<String, String> credential = new HashMap<>();
-    private GradeLevels_NQ gradeLevelsElements = new GradeLevels_NQ();
+    private GradeLevels gradeLevelsElements = new GradeLevels();
 
 
     @BeforeClass
