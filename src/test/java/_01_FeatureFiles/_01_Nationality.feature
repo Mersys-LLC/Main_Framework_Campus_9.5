@@ -1,6 +1,6 @@
 Feature:Nationality Feature
 
-  @SmokeTest
+  @SmokeTest @Regression
   Scenario Outline: Add Nationality Positive
     Given User add nation "<name>"
     Then Success message should be displayed
@@ -15,7 +15,7 @@ Feature:Nationality Feature
       | Tr15 |
     Then Exist message should be displayed
 
-  @SmokeTest @Rerun
+  @SmokeTest @Regression
   Scenario Outline: Edit Nationality
     Given User edit Nation "<name>" to new Nation "<name2>"
     Then Success message should be displayed
@@ -23,7 +23,7 @@ Feature:Nationality Feature
       | name | name2 |
       | Tr15 | UKY1  |
 
-  @SmokeTest @Rerun
+  @SmokeTest @Regression
   Scenario Outline: Delete Nationality Positive
     Given User delete nation "<name>"
     Then Success message should be displayed
