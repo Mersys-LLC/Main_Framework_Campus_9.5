@@ -63,28 +63,26 @@ public class _02_NationalitiesTest {
     nationName=getRandomName(); // set ediyorum
 
     nation.setName(nationName);
-    nation.setTranslateName("tr","aa","adas");
-    nation.getTranslateName().get(0).setGrade("asda");
-    nation.getTranslateName().get(0).setGrade("asda");
+    nation.setTranslateName("tr","aa");
 
-//    nation.setId(given()
-    Response response = given()
+    nation.setId(given()
+//    Response response = given()
         .spec(reqSpec)
         .cookies(cookies)
         .body(nation)
         .when()
         .post("/school-service/api/nationality")
         .then()
-        .extract().response();
+//        .extract().response();
 
-    nation.getTranslateName().get(0)response.jsonPath().getInt(translateName[0].lang)
+//    nation.getTranslateName().get(0)response.jsonPath().getInt(translateName[0].lang)
 
 //        .log().body()
-//        .statusCode(201)
-//        .body("name", equalTo(nation.getName()))
-//        .body("translateName[0].lang", equalTo(nation.getTranslateName().get(0).getLang()))
-//        .body("translateName[0].data", equalTo(nation.getTranslateName().get(0).getData()))
-//        .extract().jsonPath().getString("id"));
+        .statusCode(201)
+        .body("name", equalTo(nation.getName()))
+        .body("translateName[0].lang", equalTo(nation.getTranslateName().get(0).getLang()))
+        .body("translateName[0].data", equalTo(nation.getTranslateName().get(0).getData()))
+        .extract().jsonPath().getString("id"));
 
 
 //    nation.getTranslateName().get(0).setId(
