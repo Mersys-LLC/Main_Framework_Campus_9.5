@@ -42,12 +42,15 @@ public class Driver {
 
             // 39. -41. line if for to make jenkins running background for chrome full size to adjust
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
             options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage",
                 "--disable-gpu", "--window-size=1400,2400");
             threadDriver.set(new ChromeDriver(options)); // bu thread e chrome istenmişşse ve yoksa bir tane ekleniyor
             // 40. line daki optionlara gore calistir diyorsun ve max olculerde calistir boylece hata vermesini englellioz
           } else {
-            threadDriver.set(new ChromeDriver());
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            threadDriver.set(new ChromeDriver(options));
           }
           break;
 
