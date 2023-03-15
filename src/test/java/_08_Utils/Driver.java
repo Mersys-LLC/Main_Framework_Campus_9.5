@@ -6,8 +6,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -24,9 +26,10 @@ public class Driver {
     System.setProperty("user.language", "EN");
     Logger.getLogger("").setLevel(Level.SEVERE);
     System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "Error");
-
+    System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
     if (threadBrowserName.get() == null) // if XML has not started for parallel so then set browser for default
-      threadBrowserName.set("chrome");
+//      threadBrowserName.set("chrome");
+      threadBrowserName.set("edge");
 
     if (threadDriver.get() == null) {
 
@@ -50,8 +53,8 @@ public class Driver {
 
         case "firefox":
           WebDriverManager.firefoxdriver().setup();
-          threadDriver.set(new FirefoxDriver());  // this thread driver call the firefox new object
-          break;
+//          threadDriver.set(new FirefoxDriver());  // this thread driver call the firefox new object
+//          break;
 
         case "safari":
           WebDriverManager.safaridriver().setup();
@@ -60,7 +63,20 @@ public class Driver {
 
         case "edge":
           WebDriverManager.edgedriver().setup();
-          threadDriver.set(new EdgeDriver());
+//          threadDriver.set(new EdgeDriver());
+//          break;
+          if(!runningFromIJ()) { // eger Inteligge de degilse yani Jenkinsde calistir bu parti ama
+            //else ise normar inteligede calistir
+
+            // 39. -41. line if for to make jenkins running background for chrome full size to adjust
+            EdgeOptions options = new EdgeOptions();
+            options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage",
+                "--disable-gpu", "--window-size=1400,2400");
+            threadDriver.set(new EdgeDriver(options)); // bu thread e chrome istenmişşse ve yoksa bir tane ekleniyor
+            // 40. line daki optionlara gore calistir diyorsun ve max olculerde calistir boylece hata vermesini englellioz
+          } else {
+            threadDriver.set(new EdgeDriver());
+          }
           break;
       }
     }
